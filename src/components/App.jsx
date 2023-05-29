@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Section from './Section/Section';
 import Form from './Form/Form';
@@ -8,29 +8,18 @@ import Modal from './Modal/Modal';
 
 import css from './App.module.css';
 
-const LS_KEY = 'phonebook';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addContact,
+  removeContact,
+  setFilter,
+} from 'store/contacts/contactsSlice';
 
 export const App = () => {
-  const [contacts, setContacts] = useState(() => {
-    //localStorage.removeItem(LS_KEY);
-    return (
-      JSON.parse(localStorage.getItem(LS_KEY)) ?? [
-        { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56', url: '' },
-        { id: 'id-2', name: 'Hermione Kline', number: '443-89-12', url: '' },
-        { id: 'id-3', name: 'Eden Clements', number: '645-17-79', url: '' },
-        { id: 'id-4', name: 'Annie Copeland', number: '227-91-26', url: '' },
-      ]
-    );
-  });
-  const [filter, setFilter] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-  // hook useLocalStorage video_1 1:06
-
-  // as did update
-  useEffect(() => {
-    localStorage.setItem(LS_KEY, JSON.stringify(contacts));
-  }, [contacts]);
+  const dispatch = useDispatch();
+  const { contacts, filter } = useSelector(state => state.firstCombineReducer);
 
   const isIncludingName = (name, array) => {
     const lowName = name.toLowerCase();
@@ -45,9 +34,7 @@ export const App = () => {
       return;
     }
 
-    setContacts(prev => {
-      return [...prev, newItem];
-    });
+    dispatch(addContact(newItem));
   };
 
   const filterByName = () => {
@@ -56,14 +43,11 @@ export const App = () => {
   };
 
   const inputHandler = e => {
-    setFilter(e.target.value);
+    dispatch(setFilter(e.target.value));
   };
 
   const deleteHandler = id => {
-    const queryIndex = contacts.findIndex(item => item.id === id);
-    setContacts(prev => {
-      return [...prev].filter((item, index) => index !== queryIndex);
-    });
+    dispatch(removeContact(id));
   };
 
   const toggleModal = () => {
