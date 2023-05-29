@@ -1,0 +1,59 @@
+.listItem {
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  margin-bottom: 4px;
+  padding: 4px 8px;
+
+  background: linear-gradient(#3a3b3d, 87%, #b0b1b4);
+  /* background-color: #3a3b3d; */
+  /* outline: 1px solid tomato; */
+  border-radius: 8px;
+  text-align: left;
+}
+
+.imageThumb {
+  display: flex;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 20px;
+  overflow: hidden;
+
+  background-color: #b0b1b4;
+}
+
+.dataBox {
+}
+
+.pName {
+  margin: 0 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: azure;
+}
+
+.pNumber {
+  margin: 0 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: #b0b1b4;
+}
+
+.button {
+  display: inline-block;
+  margin-left: auto;
+  vertical-align: baseline;
+  padding-top: 2px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #5db4fa;
+  /* background-color: #c8c8c8; */
+}
+
+.photoDemo {
+  display: block;
+  width: 100%;
+  height: auto;
+}

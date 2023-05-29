@@ -1,0 +1,129 @@
+.form {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 310px;
+  padding: 24px 0;
+  /* border: 1px solid tomato; */
+  border-radius: 20px;
+  /* background-color: #3a3b3d; */
+  background-color: #242527;
+}
+
+.iconSpan {
+  display: flex;
+  justify-content: center;
+  width: 160px;
+  height: 160px;
+
+  border-radius: 50%;
+  background-color: #3a3b3d;
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+  overflow: hidden;
+  /* border: 1px solid tomato; */
+
+  margin-bottom: 18px;
+}
+
+.iconSpan svg {
+  width: 100%;
+  height: 100%;
+
+  color: azure;
+}
+
+.formLabel {
+  margin-bottom: 12px;
+}
+
+.input {
+  display: block;
+  width: 190px;
+  padding: 4px 12px;
+
+  font-size: 20px;
+  font-weight: 500;
+  color: azure;
+  background-color: #3a3b3d;
+
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+.input:valid {
+  box-shadow: 0 0 7px 4px rgba(221, 221, 221, 1);
+}
+
+.input::placeholder {
+  color: #b0b1b4;
+}
+
+.input:hover::-webkit-input-placeholder,
+.input:focus::-webkit-input-placeholder {
+  color: azure;
+}
+
+.imageLabel {
+  position: absolute;
+  left: 210px;
+
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  /* border: 1px solid tomato; */
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  fill: #b0b1b4;
+}
+
+.icon:hover,
+.icon:focus {
+  fill: azure;
+}
+
+.imageInput {
+  display: none;
+}
+
+.button {
+  width: 214px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #b0b1b4;
+  background-color: #3a3b3d;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.form:valid .button {
+  color: azure;
+  box-shadow: 0 0 7px 4px rgba(221, 221, 221, 1);
+}
+
+.form:valid .button:hover,
+.form:valid .button:focus {
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+}
+.form:valid .button:active {
+  box-shadow: 0 0 6px 2px rgba(221, 221, 221, 1);
+}
+
+.photo {
+  display: block;
+  width: auto;
+  height: 100%;
+  text-align: center;
+}
+
+/* .formParagraph {
+  margin: 4px 0;
+} */
