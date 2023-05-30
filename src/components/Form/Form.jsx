@@ -5,10 +5,32 @@ import { MdOutlineAddAPhoto } from 'react-icons/md';
 import css from './Form.module.css';
 import PropTypes from 'prop-types';
 
-const Form = ({ addUser, toggleModal }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'store/contacts/contactsSlice';
+
+const Form = ({ toggleModal }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [url, setUrl] = useState('');
+
+  const dispatch = useDispatch();
+  const { contacts } = useSelector(state => state.firstCombineReducer);
+
+  const isIncludingName = (name, array) => {
+    const lowName = name.toLowerCase();
+    return array.find(({ name }) => name.toLowerCase() === lowName);
+  };
+
+  const addUser = newItem => {
+    const decisionForAdd = isIncludingName(newItem.name, contacts);
+
+    if (decisionForAdd) {
+      alert(`${decisionForAdd.name} is already in contacts !`);
+      return;
+    }
+
+    dispatch(addContact(newItem));
+  };
 
   const handlerSubmit = e => {
     e.preventDefault();
@@ -18,12 +40,10 @@ const Form = ({ addUser, toggleModal }) => {
   };
 
   const handlerChangeName = e => {
-    //  const { name, value } = e.currentTarget;
     setName(e.currentTarget.value);
   };
 
   const handlerChangeNumber = e => {
-    //  const { name, value } = e.currentTarget;
     setNumber(e.currentTarget.value);
   };
 
@@ -46,7 +66,6 @@ const Form = ({ addUser, toggleModal }) => {
         )}
       </span>
       <label className={css.formLabel}>
-        {/* <p className={css.formParagraph}>Name:</p> */}
         <input
           type="text"
           name="name"
@@ -60,7 +79,6 @@ const Form = ({ addUser, toggleModal }) => {
         />
       </label>
       <label className={css.formLabel}>
-        {/* <p className={css.formParagraph}>Number:</p> */}
         <input
           type="tel"
           name="number"
@@ -94,6 +112,5 @@ const Form = ({ addUser, toggleModal }) => {
 export default Form;
 
 Form.propTypes = {
-  addUser: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,
 };

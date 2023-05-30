@@ -3,11 +3,20 @@ import PropTypes from 'prop-types';
 import { FcSearch } from 'react-icons/fc';
 import { TiUserAdd } from 'react-icons/ti';
 
-const Filter = ({ inputHandler, onModalOpen, filter }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilter } from 'store/contacts/contactsSlice';
+
+const Filter = ({ onModalOpen }) => {
+  const dispatch = useDispatch();
+  const { filter } = useSelector(state => state.firstCombineReducer);
+
+  const inputHandler = e => {
+    dispatch(setFilter(e.target.value));
+  };
+
   return (
     <div className={css.panel}>
       <label className={css.label}>
-        {/* Filter by Name: */}
         <input
           onChange={inputHandler}
           className={css.input}
@@ -33,7 +42,5 @@ const Filter = ({ inputHandler, onModalOpen, filter }) => {
 export default Filter;
 
 Filter.propTypes = {
-  inputHandler: PropTypes.func.isRequired,
   onModalOpen: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
 };
