@@ -11,7 +11,13 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);
-export const store = configureStore({ reducer: persistedReducer });
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
+});
 
 // экспорт для специфичного провайдера
 export const persistor = persistStore(store);
