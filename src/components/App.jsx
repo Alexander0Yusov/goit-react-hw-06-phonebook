@@ -56,5 +56,6 @@ export const App = () => {
 // применить Formik & Yup, react-icons, date-fns
 // темизация(цветность) emotion 'dark/light'
 // кастомный хук по типу hook useLocalStorage video_1 1:06
+// при загрузке можно кнопки disable=true
 
 // ошибка в юзэффекте не дает норм деплой

@@ -5,5 +5,4 @@ export const contactsInitialState = {
     { id: 'id-3', name: 'Eden Clements', number: '645-17-79', url: '' },
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26', url: '' },
   ],
-  filter: '',
 };

@@ -6,7 +6,7 @@ import storage from 'redux-persist/lib/storage';
 import { reducer } from './reducer';
 
 const persistConfig = {
-  key: 'phonebook_hw6',
+  key: 'phonebook',
   storage,
 };
 

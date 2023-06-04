@@ -4,11 +4,11 @@ import { FcSearch } from 'react-icons/fc';
 import { TiUserAdd } from 'react-icons/ti';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from 'store/contacts/contactsSlice';
+import { setFilter } from 'redux/filter/filterSlice';
 
 const Filter = ({ onModalOpen }) => {
   const dispatch = useDispatch();
-  const { filter } = useSelector(state => state.firstCombineReducer);
+  const { filter } = useSelector(state => state.filterCombine);
 
   const inputHandler = e => {
     dispatch(setFilter(e.target.value));

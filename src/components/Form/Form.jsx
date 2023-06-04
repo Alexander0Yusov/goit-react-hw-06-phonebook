@@ -6,7 +6,7 @@ import css from './Form.module.css';
 import PropTypes from 'prop-types';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'store/contacts/contactsSlice';
+import { addContact } from 'redux/contacts/contactsSlice';
 
 const Form = ({ toggleModal }) => {
   const [name, setName] = useState('');
@@ -14,7 +14,7 @@ const Form = ({ toggleModal }) => {
   const [url, setUrl] = useState('');
 
   const dispatch = useDispatch();
-  const { contacts } = useSelector(state => state.firstCombineReducer);
+  const { contacts } = useSelector(state => state.contactsCombine);
 
   const isIncludingName = (name, array) => {
     const lowName = name.toLowerCase();
